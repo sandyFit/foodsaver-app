@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../layouts/Navbar';
 
 const Login = () => {
     return (
-        <div>Login</div>
+        <section>
+            <Navbar />
+            <div className="flex">
+
+            </div>
+        </section>
     )
 }
 

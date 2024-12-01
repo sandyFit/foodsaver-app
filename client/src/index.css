@@ -11,6 +11,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.custom-shadow {
+    -webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,1);
+    box-shadow: -5px 5px 0px 0px rgba(0,0,0,1);
+}
+
 @layer base {
 
     html, body {
@@ -24,15 +30,23 @@ body {
 
 @layer utilities {
     .table-btn {
-        @apply px-2   border-2 border-stone-700 rounded-md text-stone-700 uppercase
+        @apply px-2 border-2 border-stone-700 rounded-md text-stone-700 uppercase
             font-[500] text-[.8rem] 
     }
-
-    
+   
     .table-th, 
     .table-td {
         @apply px-3 border-2 border-stone-500 py-2
     }
 
+    .full-btn {
+        @apply px-12 py-3 bg-yellow-100 font-[600] text-stone-700 border-2 border-stone-700 
+            rounded-full custom-shadow hover:translate-y-0.5 duration-75 
+    }
+
+    .transparent-btn {
+        @apply px-[3.5rem] py-3 bg-tahiti-700 font-[600] text-[#fff] border-2 border-stone-700 
+            rounded-full hover:translate-y-0.5 duration-75 
+    }
      
 }
