@@ -12,19 +12,32 @@ body {
 }
 
 .custom-shadow {
-    -webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,1);
-    -moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,1);
-    box-shadow: -5px 5px 0px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: -4px 4px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: -4px 4px 0px 0px rgba(0,0,0,1);
+    box-shadow: -4px 4px 0px 0px rgba(0,0,0,1);
 }
 
 @layer base {
 
     html, body {
-        @apply w-full h-full font-[62.5%] box-border m-0 p-0 
+        @apply w-full h-full font-[62.5%] box-border m-0 p-0 bg-tahiti-200
     }
 
     button, a {
-        @apply cursor-pointer
+        @apply cursor-pointer 
+    }
+
+
+    h1 {
+        @apply text-6xl font-extrabold
+    }
+
+    h2 {
+        @apply text-4xl font-bold
+    }
+
+    input {
+        @apply p-2.5 border-2 border-stone-700 rounded-full
     }
 }
 
@@ -39,14 +52,14 @@ body {
         @apply px-3 border-2 border-stone-500 py-2
     }
 
-    .full-btn {
-        @apply px-12 py-3 bg-yellow-100 font-[600] text-stone-700 border-2 border-stone-700 
-            rounded-full custom-shadow hover:translate-y-0.5 duration-75 
+    .shadow-btn {
+        @apply  font-[600] text-stone-700 border-2 border-stone-700 
+            rounded-full custom-shadow hover:outline hover:outline-4 duration-75 
     }
 
-    .transparent-btn {
+    .full-btn {
         @apply px-[3.5rem] py-3 bg-tahiti-700 font-[600] text-[#fff] border-2 border-stone-700 
-            rounded-full hover:translate-y-0.5 duration-75 
+            rounded-full hover:outline hover:outline-4 
     }
      
 }

@@ -1,14 +1,18 @@
-import React from 'react'
-import Navbar from '../layouts/Navbar'
-import HeroCard from '../components/HeroCard'
+import React from 'react';
+import Navbar from '../layouts/Navbar';
+import HeroCard from '../components/HeroCard';
+
 
 const Landing = () => {
+
+
+
     return (
         <section>
             <Navbar />
             <main className='w-full h-screen bg-tahiti-200 flex flex-col'>
                 <div className="flex flex-col justify-center items-center gap-8">
-                    <h1 className='text-6xl font-extrabold text-tahiti-700 mt-40'>
+                    <h1 className='text-tahiti-700 mt-40'>
                         Say Goodbye to Food Waste at Home
                     </h1>
                     <p className="w-[60%] text-2xl">

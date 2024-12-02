@@ -6,7 +6,7 @@ const Login = () => {
         <section>
             <Navbar />
             <div className="flex">
-
+                
             </div>
         </section>
     )
