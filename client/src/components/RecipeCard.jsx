@@ -1,21 +1,23 @@
 import React from 'react';
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-const RecipeCard = () => {
+const RecipeCard = ({bgColor}) => {
     return (
         <article>
-            <div className="flex flex-col gap-2 px-8 py-4 border-2 border-stone-700 text-sm rounded-lg
+            <div className="flex flex-col gap-2 p-8 border-2 border-stone-700 text-sm rounded-lg
                 relative">
-                <h2 className='font-[600]'>Falafel</h2>
+                <h4 className='font-[600]'>Falafel</h4>
                 <img src="./img/falafel.jpg" alt="" width={'220px'} />
                 <p>
                     Chickpea, herbs and spices. <br />
-                    <strong>Calories:</strong> 160 per unit
+                    <strong>Calories:</strong> 160 per unit <br/>
+                    <strong>Protein:</strong> 18 gr.<br/>
+                    <strong>Carbs:</strong> 32 gr.<br/>
+                    <strong>Fat:</strong> 22 gr.<br/>
                 </p>
-                <div className="w-10 h-10 rounded-full bg-tahiti-200 border-2 border-stone-700 
-                    absolute bottom-2 right-2 flex justify-center items-center">
-                    <MdKeyboardDoubleArrowRight className='text-2xl'/>
-                </div>
+                <button className={`shadow-btn ${bgColor} py-2`}>
+                    See More
+                </button>
             </div>
         </article>
     )

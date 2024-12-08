@@ -25,11 +25,16 @@ const Dashboard = ({ children }) => {
 
     return (
         <section className="w-full h-screen flex justify-center items-center p-8 bg-stone-200">
-            <div className="w-full h-full grid grid-cols-12 grid-rows-6 rounded-2xl
-                bg-stone-50 border-2 border-stone-700 ">
+            <div className="w-full h-full grid grid-cols-12 grid-rows-6 rounded-2xl bg-stone-50 
+                border-2 border-stone-700 ">
                     {/* Sidebar */}
                 <aside className='col-span-1 col-start-1 bg-tahiti-700 row-span-6 row-start-1 
-                    rounded-s-2xl border-r-2 border-stone-700 pb-52 pt-8 transition-all duration-300 ease-in-out'>
+                    rounded-s-2xl border-r-2 border-stone-700 pb-56 transition-all duration-300
+                    ease-in-out flex flex-col justify-center items-center relative'>
+                    <div className="w-full h-10 absolute top-10 bg-stone-900 "></div>
+                    <div className="w-20 z-20 mt-1">
+                        <img src="/img/FoodSaver_lignt.png" alt="FoodSaver Logo"/>
+                    </div>
                     <ul className={`w-full `}>
                         <span className='gap-12 mt-24 flex flex-col justify-center items-center
                         text-center'>
@@ -51,7 +56,7 @@ const Dashboard = ({ children }) => {
                     </div>
 
                     <div className="flex">
-                        <h1>Welcome User!</h1>
+                        <h4>Welcome User!</h4>
                     </div>
                     <div className="flex justify-center items-center gap-6 relative pr-8">
                         {/* Notifications */}

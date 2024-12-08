@@ -1,14 +1,20 @@
 import express from 'express';
-import itemController from '../controllers/itemController';
+import {
+    addFoodItem,
+    getAllFoodItems,
+    getFoodItemById,
+    updateFoodItem,
+    deleteFoodItem
+} from '../controllers/itemController.js';
 
 const router = express.Router();
 
 /**
  * @swagger
  * /foodItems/add-foodItem:
- *   foodItem:
- *     summary: Add a new foodItem
- *     description: Adds a new foodItem to the database.
+ *   post:
+ *     summary: Add a new food item
+ *     description: Adds a new food item to the database.
  *     tags:
  *       - foodItems
  *     requestBody:
@@ -20,31 +26,26 @@ const router = express.Router();
  *             properties:
  *               name:
  *                 type: string
- *                 description: Name of the foodItem
  *               quantity:
- *                 type: Number
+ *                 type: number
  *               imagePath:
  *                 type: string
- *                 description: URL of the foodItem's image
- *                 example: https://example.com/images/product1.jpg
  *               expirationDate:
- *                 type: Date
+ *                 type: string
  *                 format: date-time
- *                 description: Timestamp when the foodItem will expire
- *                 example: 2024-10-02T00:00:00Z
  *     responses:
  *       201:
- *         description: foodItem added successfully
+ *         description: Food item added successfully
  *       400:
- *         description: Bad request, invalid input
+ *         description: Invalid input
  *       500:
- *         description: Internal Server Error. Something went wrong on the server side.
+ *         description: Internal Server Error
  */
 
-router.post('/add-foodItem', itemController.addFoodItem);
-router.get('/get-foodItems', itemController.getAllFoodItems);
-router.get('/get-foodItem/:id', itemController.getFoodItemById);
-router.put('/update-foodItem/:id', itemController.updateFoodItem);
-router.delete('/delete-foodItem/:id', itemController.deleteFoodItem);
+router.post('/add-foodItem', addFoodItem);
+router.get('/get-foodItems', getAllFoodItems);
+router.get('/get-foodItem/:id', getFoodItemById);
+router.put('/update-foodItem/:id', updateFoodItem);
+router.delete('/delete-foodItem/:id', deleteFoodItem);
 
 export default router;

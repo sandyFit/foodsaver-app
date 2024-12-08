@@ -1,85 +1,115 @@
-import itemService from '../services/itemService'; // Import the item service
+import itemService from '../services/itemService.js';
 
-// Controller for adding a new food item
-exports.addFoodItem = async (req, res) => {
+// This layer handles HTTP requests
+
+export const addFoodItem = async (req, res) => {
     try {
         const { itemName, quantity, imagePath, expirationDate } = req.body;
-
-        // Call the service to add the food item
         const foodItem = await itemService.addFoodItem({ itemName, quantity, imagePath, expirationDate });
-
-        // Return a success response
         res.status(201).json({
             message: 'Alimento agregado exitosamente',
             foodItem
         });
     } catch (error) {
-        // Return an error response
-        res.status(500).json({
-            error: 'Error al registrar el alimento',
+        if (error instanceof SomeServerErrorType) {
+            return res.status(500).json({
+                error: 'Error interno del servidor',
+                details: error.message
+            });
+        }
+
+        res.status(400).json({
+            error: 'Error al agregar el alimento',
             details: error.message
-        });
+        })
     }
 };
 
-// Controller for fetching all food items
-exports.getAllFoodItems = async (req, res) => {
+export const getAllFoodItems = async (req, res) => {
     try {
-        const foodItems = await itemService.getAllFoodItems(); // Call the service to get all items
+        const foodItems = await itemService.getAllFoodItems();
         res.status(200).json(foodItems);
     } catch (error) {
-        res.status(500).json({
-            error: 'Error fetching food items',
+        if (error instanceof SomeServerErrorType) {
+            return res.status(500).json({
+                error: 'Error interno del servidor',
+                details: error.message
+            });
+        }
+        res.status(400).json({
+            error: 'Error al obtener la lista de alimentos',
             details: error.message
-        });
+        })
     }
 };
 
-// Controller for fetching a food item by ID
-exports.getFoodItemById = async (req, res) => {
+export const getFoodItemById = async (req, res) => {
     const { id } = req.params;
     try {
-        const foodItem = await itemService.getFoodItemById(id); // Call the service to get a food item by ID
+        const foodItem = await itemService.getFoodItemById(id);
         res.status(200).json(foodItem);
     } catch (error) {
-        res.status(500).json({
-            error: 'Error fetching food item',
+        if (error instanceof SomeServerErrorType) {
+            return res.status(500).json({
+                error: 'Error interno del servidor',
+                details: error.message
+            });
+        }
+        res.status(400).json({
+            error: 'Error al obtener el alimento',
             details: error.message
-        });
+        })
     }
 };
 
-// Controller for updating a food item
-exports.updateFoodItem = async (req, res) => {
+export const updateFoodItem = async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
     try {
-        const updatedFoodItem = await itemService.updateFoodItem(id, updateData); // Call the service to update the food item
+        const updatedFoodItem = await itemService.updateFoodItem(id, updateData);
         res.status(200).json({
-            message: 'Food item updated successfully',
+            message: 'Alimento actualizado exitosamente',
             updatedFoodItem
         });
     } catch (error) {
-        res.status(500).json({
-            error: 'Error updating food item',
+        if (error instanceof SomeServerErrorType) {
+            return res.status(500).json({
+                error: 'Error interno del servidor',
+                details: error.message
+            });
+        }
+        res.status(400).json({
+            error: 'Error al actualizar el alimento',
+            details: error.message
+        })
+    }
+};
+
+export const deleteFoodItem = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletedFoodItem = await itemService.deleteFoodItem(id);
+
+        if (!deletedFoodItem) {
+            return res.status(404).json({
+                error: 'El alimento no fue encontrado'
+            });
+        }
+
+        // Código 204: Respuesta exitosa sin contenido poorque ya se eliminó
+        res.status(204).send(); // No se debe incluir un cuerpo en 204
+    } catch (error) {
+        // Si el error es del servidor
+        if (error instanceof SomeServerErrorType) {
+            return res.status(500).json({
+                error: 'Error interno del servidor',
+                details: error.message
+            });
+        }
+        res.status(400).json({
+            error: 'Error al eliminar el alimento',
             details: error.message
         });
     }
 };
 
-// Controller for deleting a food item
-exports.deleteFoodItem = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const deletedFoodItem = await itemService.deleteFoodItem(id); // Call the service to delete the food item
-        res.status(200).json({
-            message: 'Food item deleted successfully',
-            deletedFoodItem
-        });
-    } catch (error) {
-        res.status(500).json({
-            error: 'Error deleting food item',
-            details: error.message
-        });
-    }
-};

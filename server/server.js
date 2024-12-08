@@ -2,14 +2,20 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectToMongoDB from './config/db.js';
 import swaggerDocs from './docs/swaggerDocs.js';
+import itemRoutes from './routes/itemRoutes.js';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Connect to the database
 connectToMongoDB();
+
+// Routes
+app.use('/api', itemRoutes);
 
 swaggerDocs(app);
 

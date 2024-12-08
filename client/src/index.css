@@ -36,6 +36,14 @@ body {
         @apply text-4xl font-bold
     }
 
+    h3 {
+        @apply text-2xl font-bold
+    }
+
+    h4 {
+        @apply text-lg font-semibold
+    }
+
     input {
         @apply p-2.5 border-2 border-stone-700 rounded-full
     }
@@ -43,7 +51,7 @@ body {
 
 @layer utilities {
     .table-btn {
-        @apply px-2 border-2 border-stone-700 rounded-md text-stone-700 uppercase
+        @apply px-2 border-2 border-stone-700 rounded-full text-stone-700 uppercase
             font-[500] text-[.8rem] 
     }
    
@@ -54,12 +62,12 @@ body {
 
     .shadow-btn {
         @apply  font-[600] text-stone-700 border-2 border-stone-700 
-            rounded-full custom-shadow hover:outline hover:outline-4 duration-75 
+            rounded-full custom-shadow 
     }
 
     .full-btn {
         @apply px-[3.5rem] py-3 bg-tahiti-700 font-[600] text-[#fff] border-2 border-stone-700 
-            rounded-full hover:outline hover:outline-4 
+            rounded-full 
     }
      
 }

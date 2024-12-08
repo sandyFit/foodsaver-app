@@ -8,7 +8,7 @@ const Register = () => {
             
             <main className="flex flex-col pt-44 justify-center items-center gap-12">
                 <h2 className='text-tahiti-700'>
-                    Create an Account and Start Saving!
+                    Join Us Today and Reduce Food Waste Effortlessly!
                 </h2>
                 <form className="w-[40%] flex flex-col gap-6">
                     <label htmlFor='email'
