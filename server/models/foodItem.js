@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const foodItemSchema = new mongoose.Schema({
-    name: {
+    itemName: {
         type: String,
         required: true,
         trim: true, // Removes extra spaces
@@ -11,6 +11,10 @@ const foodItemSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 1 // Prevents negative or zero quantities
+    },
+    imagePath: {
+        type: String,
+        
     },
     expirationDate: {
         type: Date,
@@ -22,7 +26,7 @@ const foodItemSchema = new mongoose.Schema({
             message: 'Expiration date must be in the future.'
         }
     }
-
 });
 
-export default foodItemSchema;
+// Creating and exporting the model based on the schema
+export default mongoose.model('FoodItem', foodItemSchema);
